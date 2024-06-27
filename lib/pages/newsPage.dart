@@ -4,31 +4,47 @@ import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Newspage extends StatefulWidget {
-  final String imageUrl, title, time, description,url,content;
+  final String imageUrl, title, time, description, url, content;
   const Newspage(
       {super.key,
       required this.imageUrl,
       required this.title,
       required this.time,
-      required this.description, required this.url, required this.content});
+      required this.description,
+      required this.url,
+      required this.content});
 
   @override
   State<Newspage> createState() => _NewspageState();
 }
 
 class _NewspageState extends State<Newspage> {
-redirectToBrowser(String link)async{
-   final Uri url = Uri.parse(link);
- if (!await launchUrl(url)) {
+  redirectToBrowser(String link) async {
+    final Uri url = Uri.parse(link);
+    if (!await launchUrl(url)) {
       throw Exception('Could not reach the link');
- }
+    }
+  }
 
-}
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'News ',
+              style: TextStyle(color: Colors.orange),
+            ),
+            Text(
+              'app',
+              style: TextStyle(color: Colors.black),
+            )
+          ],
+        ),
+        centerTitle: true,
+      ),
       body: ListView(
         children: [
           const SizedBox(
@@ -45,7 +61,7 @@ redirectToBrowser(String link)async{
                   ),
                   borderRadius: BorderRadius.circular(20)),
               child: InstaImageViewer(
-              imageUrl: widget.imageUrl,
+                imageUrl: widget.imageUrl,
                 child: CachedNetworkImage(
                   imageUrl: widget.imageUrl,
                   placeholder: (context, url) =>
@@ -69,26 +85,54 @@ redirectToBrowser(String link)async{
               ),
             ),
           ),
-          
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(widget.title,style: const TextStyle(color: Colors.black,fontSize: 30,fontWeight: FontWeight.bold),),
-                const SizedBox(height: 10,),
-                Text(widget.description,style: const TextStyle(color: Colors.black,fontSize: 18,),maxLines: 10,overflow: TextOverflow.ellipsis,),
-                const SizedBox(height: 15,),
+                Text(
+                  widget.title,
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  widget.description,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                  maxLines: 10,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
                 Text(widget.content),
-                TextButton(onPressed: (){
-                  redirectToBrowser(widget.url);
-                }, child: Row(
-                  children: [
-                    const Text('Read more',style: TextStyle(color: Colors.blue),),
-                    const SizedBox(width: 3,),
-                    Image.asset('assets/icons/arrows.png',height: 26,color: Colors.blue,)
-                  ],
-                ))
+                TextButton(
+                    onPressed: () {
+                      redirectToBrowser(widget.url);
+                    },
+                    child: Row(
+                      children: [
+                        const Text(
+                          'Read more',
+                          style: TextStyle(color: Colors.blue),
+                        ),
+                        const SizedBox(
+                          width: 3,
+                        ),
+                        Image.asset(
+                          'assets/icons/arrows.png',
+                          height: 26,
+                          color: Colors.blue,
+                        )
+                      ],
+                    ))
               ],
             ),
           )
