@@ -1,16 +1,37 @@
-# news_app
+# Flutter News App
 
-A new Flutter project.
+A Flutter-based mobile application that delivers the latest news to your fingertips. This app allows users to search for news, view trending headlines, scroll through articles, view images, and redirect to source links to read full articles.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- **Search News:** Easily search for news articles based on keywords.
+- **Trending Headlines:** Stay updated with the latest trending headlines.
+- **Scroll News:** Smoothly scroll through a list of news articles.
+- **View Images:** View high-quality images associated with news articles.
+- **Source Links:** Redirect to the original source to read the full article.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Installation Guide
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Prerequisites
+
+- Flutter SDK: [Install Flutter](https://flutter.dev/docs/get-started/install)
+- Dart SDK: Comes with Flutter
+- Android Studio or VS Code: Preferred IDE for Flutter development
+
+### Step-by-Step Installation
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/yourusername/flutter-news-app.git
+   cd flutter-news-app
+2. **Install Dependencies**
+   ```bash
+   flutter pub get
+3. **Run the Application**
+   ```bash
+   flutter run
+4. **Configuration**
+  ```bash
+  const String apiKey = 'YOUR_API_KEY_HERE';
+
